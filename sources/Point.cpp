@@ -18,10 +18,9 @@ string Point::print() const
 	return "";
 }
 
-// static const Point &moveTowards(const Point &curr, const Point &other, const double dist){
-//     return curr;
-    
-// }
+Point Point::moveTowards(Point &_source, Point& _dest, double _dist){
+    return Point(0,0);
+}
 
 
 

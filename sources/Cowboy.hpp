@@ -1,9 +1,12 @@
-#pragma once
+// #pragma once
+#ifndef COWBOY_HPP
+#define COWBOY_HPP
 
 #include "Character.hpp"
 
 namespace ariel
 {
+};
 	class Cowboy : public Character
 	{
 		private:
@@ -20,11 +23,10 @@ namespace ariel
 			*/
 			Cowboy(std::string name, Point location);
 
-			/*
-			* @brief default constructor, gererates two random doubles as a Point
-			*/
-			Cowboy();
+			virtual ~Cowboy()=default;
 
+			
+		
 			/*
 			* @brief Shoots another character.
 			* @param other The other character.
@@ -45,10 +47,16 @@ namespace ariel
 			*/
 			void reload();
 
+			/*@brief get the current number of bullets the cowboy has
+			* @return int number of bullets 
+			*/
+			int getNumBullets() const;
 			/*
 			* @brief Prints the cowboy.
 			* @return void
 			*/
 			std::string print() const override;
+
 	};
-}
+// }
+#endif

@@ -4,6 +4,9 @@
 namespace ariel{
     class TrainedNinja: public Ninja{
         public:
-            TrainedNinja(const std::string name, const Point location);
+            TrainedNinja(std::string name,Point location);
+            // ~TrainedNinja()=default;
     };
+
+
 }

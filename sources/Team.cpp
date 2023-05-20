@@ -10,7 +10,9 @@ Character *Team::_find_victim(Team *other)
 
 Team::Team(Character *leader) : _leader(leader), _size(1)
 {
-	_members.push_back(leader);
+	if(leader->isInTeam()){
+		_members.push_back(leader);
+	}
 }
 
 Team::~Team()
@@ -41,7 +43,13 @@ Team &Team::operator=(Team &&_otherTeam) noexcept
 
 void Team::add(Character *member)
 {
-	return;
+	if(_members.size()==10){
+		__throw_runtime_error;
+	}
+	if(member->isInTeam()){
+		_members.push_back(member);
+	}
+	
 }
 
 void Team::attack(Team *other)
@@ -61,7 +69,17 @@ Character *Team::getMember(int index) const
 
 int Team::getSize() const
 {
-	return 0;
+	return this->_size;
+}
+
+
+void Team::setLeader(Character* leader){
+	this->_leader = leader;
+}
+
+
+vector<Character*> Team::getTeam() const{
+	return this->_members;
 }
 
 void Team::print() const
@@ -69,26 +87,3 @@ void Team::print() const
 	return;
 }
 
-Team2::Team2(Character *leader) : Team(leader) {}
-
-void Team2::attack(Team *other)
-{
-	return;
-}
-
-void Team2::print() const
-{
-	return;
-}
-
-SmartTeam::SmartTeam(Character *leader) : Team(leader) {}
-
-void SmartTeam::attack(Team *other)
-{
-	return;
-}
-
-void SmartTeam::print() const
-{
-	return;
-}

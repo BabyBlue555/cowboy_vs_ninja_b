@@ -1,4 +1,7 @@
-#pragma once
+// #pragma once
+#ifndef TEAM_HPP
+#define TEAM_HPP
+
 
 #include <vector>
 #include "Cowboy.hpp"
@@ -10,9 +13,14 @@
 
 namespace ariel
 {
+};
+
+
+// namespace ariel
+// {
 	class Team
 	{
-		protected:
+		private:
 			/*
 			* @brief A pointer to the leader of the team.
 			*/
@@ -21,7 +29,7 @@ namespace ariel
 			/*
 			* @brief A vector of pointers to the members of the team.
 			*/
-			std::vector<Character *> _members;
+			vector<Character *> _members;
 
 			/*
 			* @brief The size of the team.
@@ -49,7 +57,7 @@ namespace ariel
 			virtual ~Team();
 
 	
-			// copy constructor
+			//copy constructor
 			Team(Team &);
 			// copy assignment operator
 			Team &operator=(const Team &) noexcept;
@@ -90,51 +98,24 @@ namespace ariel
 			*/
 			int getSize() const;
 
+			/*@brief set the leader of the team
+			*@note needed in case of the death of the previous leader 
+			*/
+			void setLeader(Character* leader);
+
+
+			/*@brief get the team
+			*@return vector<Character*>  - the vector of the team members
+			*/
+			vector<Character*> getTeam() const;
+
 			/*
 			* @brief Print the team members
 			*/
 			virtual void print() const;
 	};
 
-	class Team2 : public Team
-	{
-		public:
-			/*
-			* @brief Construct a new Team2 object.
-			* @param leader A pointer to the leader of the team.
-			*/
-			Team2(Character *leader);
 
-			/*
-			* @brief Attack the other team
-			* @param other A pointer to the other team
-			*/
-			void attack(Team *other) override;
+// }
 
-			/*
-			* @brief Print the team members
-			*/
-			void print() const override;
-	};
-
-	class SmartTeam : public Team
-	{
-		public:
-			/*
-			* @brief Construct a new SmartTeam object.
-			* @param leader A pointer to the leader of the team.
-			*/
-			SmartTeam(Character *leader);
-
-			/*
-			* @brief Attack the other team
-			* @param other A pointer to the other team
-			*/
-			void attack(Team *other) override;
-
-			/*
-			* @brief Print the team members
-			*/
-			void print() const override;
-	};
-}
+#endif

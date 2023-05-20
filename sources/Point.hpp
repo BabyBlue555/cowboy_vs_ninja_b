@@ -4,6 +4,7 @@
 
 namespace ariel
 {
+    };
 
 class Point{
     private:
@@ -11,12 +12,9 @@ class Point{
 
     public:
         Point(double x_ptr,double y_ptr);
-        double distance(const Point point) const;
+        double distance(Point point) const;
         std::string print() const;
-        //Point moveTowards(Point src,Point dst,int dist);
-        static Point moveTowards(Point curr, Point other, const double dist){
-            return curr;   
-        }
+        static Point moveTowards(Point &, Point &, double);
         double getX() const;
         double getY() const;
 
@@ -25,5 +23,5 @@ class Point{
 
 
 
-}
+// }
 

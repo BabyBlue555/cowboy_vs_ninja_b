@@ -1,12 +1,18 @@
-#pragma once
+// #pragma once
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
 #include "Point.hpp"
 
 #include <string>
-
-
 namespace ariel
 {
+
+};
+
+
+// namespace ariel
+// {
 	class Character
 	{
 		private:
@@ -40,16 +46,16 @@ namespace ariel
 			*/
 			Character(std::string name, Point& location, int health_points);
 
-			// copy constructor
-			Character(Character &_otherChar) noexcept=delete;
-			// copy assignment operator
-			Character &operator=(const Character &) noexcept;
-			// move constructor
-			Character(Character &&) noexcept=delete;
-			// move assignment operator
-			Character &operator=(Character &&) noexcept;
-			// destructor
-			virtual ~Character();
+			             //destructor
+            virtual ~Character() = default;
+            //copy constructor
+            // Character(const Character&);
+            // //copy assignment
+            // Character& operator=(const Character&);
+            // //move constructor
+            // Character(Character&&) noexcept;
+            // //move assignment
+            // Character& operator=(Character&&) noexcept;
 
 			/*
 			* @brief Checks if the character is alive.
@@ -112,15 +118,15 @@ namespace ariel
 			*/
 			int getHP() const;
 
-			void setHP(int);
+			// void setHP(int);
             
-    
-
-			/*
+    		/*
 			* @brief Prints the character.
 			* @return void
 			* @note This is a pure virtual function because this class is abstract.
 			*/
 			virtual std::string print() const = 0;
 	};
-}
+// }
+
+#endif

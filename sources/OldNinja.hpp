@@ -5,6 +5,6 @@ using namespace std;
 namespace ariel{
     class OldNinja: public Ninja{
         public:
-            OldNinja(const string name, const Point location);
+            OldNinja(string name,Point location);
     };
 };

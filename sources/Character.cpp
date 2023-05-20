@@ -1,6 +1,7 @@
 //#include "Point.hpp"
 
 #include "Character.hpp"
+#include <iostream>
 
 #include <cmath>
 using namespace std;
@@ -10,48 +11,43 @@ using namespace ariel;
 
 Character::Character(string name, Point &location, int health_points) : _name(name), _location(location), _hp(health_points), _inteam(false) {}
 
+// Character::~Character(){
+// 	delete this;
+// }
+
 bool Character::isAlive() const{
-	return 1;
+	if(_hp>0)
+		return 1;
+	return 0;
 }
-
-
-// Character::Character(Character &_otherChar) noexcept=delete;
-// copy assignment operator
-Character &Character::operator=(const Character &_otherChar) noexcept
-{
-    this->_location = _otherChar._location;
-    this->_hp = _otherChar._hp;
-    this->_name = _otherChar._name;
-    return *this;
-}
-// move constructor
-// Character::Character(Character &&_otherChar) noexcept =delete;
-// move assignment operator
-Character &Character::operator=(Character &&_otherChar) noexcept
-{
-    return _otherChar = *this;
-}
-// destructor
-Character::~Character() {}
 
 
 double Character::distance(Character *other) const
 {
-	return 0.0;
+	if (other == nullptr)
+		throw invalid_argument("Other character is null");
+	return this->distance(other);
 }
 
 void Character::hit(int power)
 {
-	return;
+	if(power<0){
+		throw invalid_argument("Power cannot be negative!");;
+	}
+	_hp -= (_hp - power < 0 ? _hp : power);
+
+	if (_hp == 0)
+		cout << _name << " died." << endl;
+	// this->_hp-=power;
 }
 
 string Character::getName() const
 {
-	return "";
+	return this->_name;
 }
 
-void Character::setName(std::string){
-	
+void Character::setName(string name){
+	this->_name=name;
 }
 
 const Point& Character::getLocation() const
@@ -61,27 +57,27 @@ const Point& Character::getLocation() const
 
 void Character::setLocation(Point &location)
 {
-	return;
+	this->_location = location;
 }
 
 bool Character::isInTeam() const
 {
-	return false;
+	return this->_inteam;
 }
 
 void Character::setInTeam(bool in_team)
 {
-	return;
+	this->_inteam=in_team;
 }
 
 int Character::getHP() const
 {
-	return 0;
+	return _hp;
 }
 
-void Character::setHP(int){
-
-}
+// void Character::setHP(int ){
+	
+// }
 
 
 

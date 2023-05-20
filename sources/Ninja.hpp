@@ -1,13 +1,16 @@
-#pragma once
+// #pragma once
+#ifndef NINJA_HPP
+#define NINJA_HPP
 
 #include "Character.hpp"
 #include <string>
 
 namespace ariel
 {
+};
 	class Ninja : public Character
 	{
-		protected:
+		private:
 			/*
 			* @brief The speed of the ninja.
 			*/
@@ -22,6 +25,8 @@ namespace ariel
 			* @param speed The speed of the ninja.
 			*/
 			Ninja(std::string name, Point location, int health_points, int speed);
+
+			virtual ~Ninja()=default;
 
 			/*
 			* @brief Moves the ninja to another character _speed steps closer.
@@ -43,6 +48,11 @@ namespace ariel
 			* @return void
 			*/
 			std::string print() const override;
+
+			int getSpeed() const{
+				return _speed;
+			}
 	};
 
-}
+// }
+#endif
