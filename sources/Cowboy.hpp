@@ -6,9 +6,10 @@
 
 namespace ariel
 {
-};
+
 	class Cowboy : public Character
 	{
+	
 		private:
 			/*
 			* @brief The number of bullets the cowboy has.
@@ -23,7 +24,7 @@ namespace ariel
 			*/
 			Cowboy(std::string name, Point location);
 
-			virtual ~Cowboy()=default;
+			// virtual ~Cowboy()=default;
 
 			
 		
@@ -58,5 +59,5 @@ namespace ariel
 			std::string print() const override;
 
 	};
-// }
+};
 #endif

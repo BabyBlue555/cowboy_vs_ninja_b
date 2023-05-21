@@ -1,38 +1,31 @@
 #include "Point.hpp"
 
 using namespace std;
-using namespace ariel;
-#include <cmath>
+namespace ariel{
 
-Point::Point(double x_ptr,double y_ptr): _x(x_ptr),_y(y_ptr){
+    Point::Point(double x_ptr,double y_ptr): _x(x_ptr),_y(y_ptr){
 
-}
+    }
 
-double Point::distance(const Point point) const{
-    return sqrt(pow(this->_x - point._x,2) + pow(this->_y - point._y,2) );
+    double Point::distance(Point point) const{
 
-}
+        double dx =point.getX() - this->_x; // Calculate the difference in x-coordinates
+        double dy =point.getY() - this->_y ; // Calculate the difference in y-coordinates
+        return sqrt(dx*dx + dy*dy );
+    }
 
-string Point::print() const
-{
-	return "";
-}
+    string Point::print() const
+    {
+        return "(" + to_string(_x)  + ", " + to_string(_y) + ")";
+    }
 
-Point Point::moveTowards(Point &_source, Point& _dest, double _dist){
-    return Point(0,0);
-}
+    double Point::getX() const
+    {
+        return _x;
+    }
 
-
-
-double Point::getX() const
-{
-	return 0.0;
-}
-
-double Point::getY() const
-{
-	return 0.0;
-}
-
-
- //cout << "Value of a is " << a;
+    double Point::getY() const
+    {
+        return _y;
+    } 
+}; 

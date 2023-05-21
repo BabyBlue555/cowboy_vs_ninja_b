@@ -5,80 +5,66 @@
 
 #include <cmath>
 using namespace std;
-using namespace ariel;
+namespace ariel{
 
 
-
-Character::Character(string name, Point &location, int health_points) : _name(name), _location(location), _hp(health_points), _inteam(false) {}
-
-// Character::~Character(){
-// 	delete this;
-// }
-
-bool Character::isAlive() const{
-	if(_hp>0)
-		return 1;
-	return 0;
-}
+	Character::Character(string name, Point location, int health_points) : _name(name), _location(location), _hp(health_points), _inteam(false) {}
 
 
-double Character::distance(Character *other) const
-{
-	if (other == nullptr)
-		throw invalid_argument("Other character is null");
-	return this->distance(other);
-}
-
-void Character::hit(int power)
-{
-	if(power<0){
-		throw invalid_argument("Power cannot be negative!");;
+	bool Character::isAlive() const{
+		if(_hp>0)
+			return 1;
+		return 0;
 	}
-	_hp -= (_hp - power < 0 ? _hp : power);
 
-	if (_hp == 0)
-		cout << _name << " died." << endl;
-	// this->_hp-=power;
-}
 
-string Character::getName() const
-{
-	return this->_name;
-}
+	double Character::distance(Character *other) const
+	{
+		if (other == nullptr)
+			throw invalid_argument("Other character is null");
+		return this->_location.distance(other->getLocation());
+	}
 
-void Character::setName(string name){
-	this->_name=name;
-}
+	void Character::hit(int power)
+	{
+		if(power<0){
+			throw invalid_argument("Power cannot be negative!");;
+		}
+		_hp -= power;
+	}
 
-const Point& Character::getLocation() const
-{
-	return _location;
-}
+	string Character::getName() const
+	{
+		return this->_name;
+	}
 
-void Character::setLocation(Point &location)
-{
-	this->_location = location;
-}
+	void Character::setName(string name){
+		this->_name=name;
+	}
 
-bool Character::isInTeam() const
-{
-	return this->_inteam;
-}
+	const Point Character::getLocation() const
+	{
+		return this->_location;
+	}
 
-void Character::setInTeam(bool in_team)
-{
-	this->_inteam=in_team;
-}
+	void Character::setLocation(Point location){
+		this->_location = location;
+	}
 
-int Character::getHP() const
-{
-	return _hp;
-}
+	bool Character::isInTeam() const{
+		return this->_inteam;
+	}
 
-// void Character::setHP(int ){
-	
-// }
+	void Character::setInTeam(bool in_team)
+	{
+		this->_inteam=in_team;
+	}
 
+	int Character::getHP() const
+	{
+		return _hp;
+	}
+};
 
 
  

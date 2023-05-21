@@ -8,7 +8,7 @@
 namespace ariel
 {
 
-};
+
 
 
 // namespace ariel
@@ -24,7 +24,7 @@ namespace ariel
 			/*
 			* @brief The location of the character.
 			*/
-			Point& _location;
+			Point _location;
 
 			/*
 			 * @brief The health points of the character.
@@ -44,18 +44,18 @@ namespace ariel
 			* @param location The starting location of the character.
 			* @param health_points The health points of the character.
 			*/
-			Character(std::string name, Point& location, int health_points);
+			Character(std::string name, Point location, int health_points);
 
-			             //destructor
+			//destructor
             virtual ~Character() = default;
             //copy constructor
-            // Character(const Character&);
-            // //copy assignment
-            // Character& operator=(const Character&);
-            // //move constructor
-            // Character(Character&&) noexcept;
-            // //move assignment
-            // Character& operator=(Character&&) noexcept;
+            Character(const Character&);
+            //copy assignment
+            Character& operator=(const Character&);
+            //move constructor
+            Character(Character&&) noexcept;
+            //move assignment
+            Character& operator=(Character&&) noexcept;
 
 			/*
 			* @brief Checks if the character is alive.
@@ -91,14 +91,14 @@ namespace ariel
 			* @brief Gets the location of the character.
 			* @return The location of the character.
 			*/
-			const Point& getLocation() const;
+			const Point getLocation() const;
 
 			/*
 			* @brief Sets the location of the character.
 			* @param location The new location of the character.
 			* @return void
 			*/
-			void setLocation(Point& location);
+			void setLocation(Point location);
 
 			/*
 			 * @brief Checks if the character is in a team.
@@ -128,5 +128,5 @@ namespace ariel
 			virtual std::string print() const = 0;
 	};
 // }
-
+};
 #endif

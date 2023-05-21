@@ -11,13 +11,7 @@
 #include "YoungNinja.hpp"
 #include "TrainedNinja.hpp"
 
-namespace ariel
-{
-};
-
-
-// namespace ariel
-// {
+namespace ariel{
 	class Team
 	{
 		private:
@@ -32,16 +26,15 @@ namespace ariel
 			vector<Character *> _members;
 
 			/*
-			* @brief The size of the team.
-			*/
-			int _size;
-
-			/*
 			* @brief Find a victim to attack.
 			* @param other A pointer to the other team.
 			* @return A pointer to the victim, or nullptr if there is no victim.
 			*/
-			static Character *_find_victim(Team *other);
+			Character* find_victim(Team *other, Character* leader);
+			Character* choose_leader(Team *our, Character* leader);
+
+
+
 
 		public:
 			/*
@@ -85,18 +78,9 @@ namespace ariel
 			*/
 			int stillAlive() const;
 
-			/*
-			* @brief Get a member of the team
-			* @param index The index of the member
-			* @return A pointer to the member
-			*/
-			Character *getMember(int index) const;
+			//getter setter 
+			vector<Character*> getMembers();
 
-			/*
-			* @brief Get the size of the team
-			* @return The size of the team
-			*/
-			int getSize() const;
 
 			/*@brief set the leader of the team
 			*@note needed in case of the death of the previous leader 
@@ -117,5 +101,5 @@ namespace ariel
 
 
 // }
-
+};
 #endif

@@ -47,6 +47,14 @@ int main() {
      if (team_A.stillAlive() > 0) cout << "winner is team_A" << endl;
      else cout << "winner is team_B" << endl;
 
+   Cowboy cowboy{"Bob", Point{2, 3}};
+   double dist1=cowboy.getLocation().distance(Point{2, 3});
+   double dist2=cowboy.getLocation().distance(Point{3, 2});
+   cout<<dist1<<endl;
+   cout<<dist2<<endl;
+
+
+
      return 0; // no memory issues. Team should free the memory of its members. both a and b teams are on the stack. 
 
 }
