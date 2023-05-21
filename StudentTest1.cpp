@@ -102,15 +102,15 @@ TEST_SUITE("Point class tests") {
 
 TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive() )") {
 
-    // TEST_CASE("Cowboy initialization") {
-    //     Cowboy cowboy{"Bob", Point{2, 3}};
-    //     CHECK(cowboy.hasboolets());
-    //     CHECK_EQ(cowboy.getName(), "Bob");
-    //     CHECK_EQ(cowboy.getLocation().distance(Point{2, 3}), 0);
-    //     CHECK_NE(cowboy.getLocation().distance(Point{3, 2}), 0);
+    TEST_CASE("Cowboy initialization") {
+        Cowboy cowboy{"Bob", Point{2, 3}};
+        CHECK(cowboy.hasboolets());
+        CHECK_EQ(cowboy.getName(), "Bob");
+        CHECK_EQ(cowboy.getLocation().distance(Point{2, 3}), 0);
+        CHECK_NE(cowboy.getLocation().distance(Point{3, 2}), 0);
 
-    //     CHECK(cowboy.isAlive());
-    // }
+        CHECK(cowboy.isAlive());
+    }
 
     TEST_CASE("YoungNinja initialization") {
         YoungNinja ninja{"Bob", Point{2, 3}};
