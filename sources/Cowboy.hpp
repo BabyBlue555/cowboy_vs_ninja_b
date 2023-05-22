@@ -22,7 +22,7 @@ namespace ariel
 			* @param name The name of the cowboy.
 			* @param location The starting location of the cowboy.
 			*/
-			Cowboy(std::string name, Point location);
+			Cowboy(std::string name,Point location);
 
 			// virtual ~Cowboy()=default;
 

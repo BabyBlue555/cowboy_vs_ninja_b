@@ -12,9 +12,7 @@ namespace ariel{
 
 
 	bool Character::isAlive() const{
-		if(_hp>0)
-			return 1;
-		return 0;
+		 return this->_hp > 0;
 	}
 
 

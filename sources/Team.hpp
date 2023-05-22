@@ -24,17 +24,13 @@ namespace ariel{
 			* @brief A vector of pointers to the members of the team.
 			*/
 			vector<Character *> _members;
-
-			/*
+				/*
 			* @brief Find a victim to attack.
 			* @param other A pointer to the other team.
 			* @return A pointer to the victim, or nullptr if there is no victim.
 			*/
 			Character* find_victim(Team *other, Character* leader);
-			Character* choose_leader(Team *our, Character* leader);
-
-
-
+			void choose_leader(Character* leader);
 
 		public:
 			/*
@@ -81,6 +77,8 @@ namespace ariel{
 			//getter setter 
 			vector<Character*> getMembers();
 
+			Character* getLeader();
+
 
 			/*@brief set the leader of the team
 			*@note needed in case of the death of the previous leader 
@@ -92,6 +90,8 @@ namespace ariel{
 			*@return vector<Character*>  - the vector of the team members
 			*/
 			vector<Character*> getTeam() const;
+
+			
 
 			/*
 			* @brief Print the team members

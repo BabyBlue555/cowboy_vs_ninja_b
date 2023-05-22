@@ -19,6 +19,10 @@ class Team2 : public Team{
 			*/
 			Team2(Character *leader);
 
+			Character* find_victim(Team *other, Character* leader);
+
+			void choose_leader(Character* leader);
+
 			/*
 			* @brief Attack the other team
 			* @param other A pointer to the other team

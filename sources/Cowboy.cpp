@@ -4,7 +4,7 @@
 using namespace std;
 namespace ariel{
 
-	Cowboy::Cowboy(string name, Point location) : Character(name, location, 110) {}
+	 Cowboy::Cowboy(string name,Point location): Character(name, location, 110 ), _bullets(6) {}
 
 	void Cowboy::shoot(Character *other)
 	{
@@ -24,10 +24,7 @@ namespace ariel{
 
 	bool Cowboy::hasboolets() const
 	{
-		if(_bullets){
-			return 1;
-		}
-		return 0;
+		 return this->_bullets > 0;
 	}
 
 	void Cowboy::reload()
