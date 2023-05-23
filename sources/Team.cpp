@@ -52,7 +52,7 @@ namespace ariel
 		// iterating only on the Cowboys, using dynamic_cast
 		for (Character *character : other->getMembers())
 		{
-			if (character->isAlive())
+			if (character != nullptr && character->isAlive())
 			{
 				Cowboy *cowboy = dynamic_cast<Cowboy *>(character);
 				if (cowboy == nullptr)
@@ -61,19 +61,18 @@ namespace ariel
 				}
 				else
 				{
-					if (character->isAlive())
+
+					// check distance from our teams' leader
+					if (curr_victim == nullptr)
 					{
-						// check distance from our teams' leader
-						if (curr_victim == nullptr)
-						{
-							curr_victim = character;
-						}
-						else
-						{
-							if (character->distance(leader) < curr_victim->distance(leader))
-								curr_victim = character;
-						}
+						curr_victim = character;
 					}
+					else
+					{
+						if (character->distance(leader) < curr_victim->distance(leader))
+							curr_victim = character;
+					}
+					//}
 				}
 			}
 		}
@@ -81,7 +80,7 @@ namespace ariel
 		// iterating only on the Ninjas, using dynamic_cast
 		for (Character *character : other->getMembers())
 		{
-			if (character->isAlive())
+			if (character != nullptr && character->isAlive())
 			{
 				Ninja *ninja = dynamic_cast<Ninja *>(character);
 				if (ninja == nullptr)
@@ -90,8 +89,8 @@ namespace ariel
 				}
 				else
 				{
-					if (character->isAlive())
-					{
+					// if (character->isAlive())
+					// {
 						// check distance from our teams' leader
 						if (curr_victim == nullptr)
 						{
@@ -102,7 +101,7 @@ namespace ariel
 							if (character->distance(leader) < curr_victim->distance(leader))
 								curr_victim = character;
 						}
-					}
+					//}
 				}
 			}
 		}
@@ -113,54 +112,55 @@ namespace ariel
 	void Team::choose_leader(Character *leader)
 	{
 		Character *new_leader = nullptr;
-		Cowboy *cowboy = nullptr;
-		Ninja *ninja = nullptr;
+		//Cowboy *cowboy = nullptr;
+		//Ninja *ninja = nullptr;
 
 		// iterating only on the Cowboys in our team, using dynamic_cast
 		for (Character *character : this->getMembers())
 		{
-			// if (character->isAlive())
-			// {
-			cowboy = dynamic_cast<Cowboy *>(character);
-			if (cowboy != nullptr)
+			if (character != nullptr && character->isAlive())
 			{
-				if (cowboy->isAlive())
+
+				Cowboy *cowboy= dynamic_cast<Cowboy *>(character);
+				if (cowboy != nullptr && cowboy->isAlive())
 				{
-					// check distance from our teams' leader
-					if (new_leader == nullptr)
-					{
-						new_leader = character;
-					}
-					else
-					{
-						if (character->distance(leader) < new_leader->distance(leader))
+					// if ()
+					// {
+						// check distance from our teams' leader
+						if (new_leader == nullptr)
+						{
 							new_leader = character;
+						}
+						else
+						{
+							if (character->distance(leader) < new_leader->distance(leader))
+								new_leader = character;
+						}
 					}
-				}
-				//	}
+				//}
 			}
 		}
 		for (Character *character : this->getMembers())
 		{
-			// if (character->isAlive())
-			// {
-			ninja = dynamic_cast<Ninja *>(character);
-			if (ninja != nullptr)
+			if (character != nullptr && character->isAlive())
 			{
-				if (ninja->isAlive())
+				Ninja *ninja = dynamic_cast<Ninja *>(character);
+				if (ninja != nullptr && ninja->isAlive())
 				{
-					// check distance from our teams' leader
-					if (new_leader == nullptr)
-					{
-						new_leader = character;
-					}
-					else
-					{
-						if (character->distance(leader) < new_leader->distance(leader))
+					// if (character->isAlive())
+					// {
+						// check distance from our teams' leader
+						if (new_leader == nullptr)
+						{
 							new_leader = character;
+						}
+						else
+						{
+							if (character->distance(leader) < new_leader->distance(leader))
+								new_leader = character;
+						}
 					}
-				}
-				//}
+			//	}
 			}
 		}
 		if (new_leader == nullptr)
@@ -181,6 +181,10 @@ namespace ariel
 		if (!other->stillAlive())
 		{
 			throw runtime_error("can't attack a team with all dead people/can't attack when all people in team are dead");
+		}
+
+		if(this->_leader==nullptr){
+			throw invalid_argument("leader is null");
 		}
 		// define whos the leader and whos the victim
 		if (!this->_leader->isAlive())
@@ -210,29 +214,30 @@ namespace ariel
 					break;
 				}
 			}
-			// if (character->isAlive())
-			// {
-			Cowboy *cowboy = dynamic_cast<Cowboy *>(character);
-			// if (cowboy == nullptr)
-			// {
-			// 	continue;
-			// }
-			// else
-			if (cowboy != nullptr)
+
+			if (character != nullptr && character->isAlive())
 			{
-				if (cowboy->isAlive())
+				Cowboy *cowboy = dynamic_cast<Cowboy *>(character);
+				// if (cowboy == nullptr)
+				// {
+				// 	continue;
+				// }
+				// else
+				if (cowboy != nullptr&& cowboy->isAlive())
 				{
-					if (cowboy->hasboolets())
-					{
-						cowboy->shoot(victim);
-					}
-					else
-					{
-						cowboy->reload();
-					}
+					// if ()
+					// {
+						if (cowboy->hasboolets())
+						{
+							cowboy->shoot(victim);
+						}
+						else
+						{
+							cowboy->reload();
+						}
+					//}
 				}
 			}
-			//}
 		}
 
 		// iterating only on ninjas in our team
@@ -240,35 +245,37 @@ namespace ariel
 		for (Character *character : this->_members)
 		{
 			// choose new victim in case the current one is dead
-			if (!victim->isAlive())
-			{
-				victim = find_victim(other, this->_leader);
-				if (victim == nullptr)
-				{ // if we haven't found a new victim, the attack is over
-					break;
-				}
+			// if (!victim->isAlive())
+			// {
+			victim = find_victim(other, this->_leader);
+			if (victim == nullptr)
+			{ // if we haven't found a new victim, the attack is over
+				break;
 			}
-			// if (character->isAlive())
-			// {
-			Ninja *ninja = dynamic_cast<Ninja *>(character);
-			// if (ninja == nullptr)
-			// {
-			// 	continue;
-			// }
-			// else
-			if (ninja != nullptr)
+			//}
+
+			if (character != nullptr && character->isAlive())
 			{
-				if (ninja->isAlive())
+				Ninja *ninja = dynamic_cast<Ninja *>(character);
+				// if (ninja == nullptr)
+				// {
+				// 	continue;
+				// }
+				// else
+				if (ninja != nullptr && ninja->isAlive())
 				{
-					if (ninja->distance(victim) <= 1)
-					{
-						ninja->slash(victim);
+					// if ()
+					// {
+						if (ninja->getLocation().distance(victim->getLocation()) <= 1)
+						{
+							ninja->slash(victim);
+						}
+						else
+						{
+							ninja->move(victim);
+						}
 					}
-					else
-					{
-						ninja->move(victim);
-					}
-				}
+				//}
 			}
 		}
 	}
@@ -278,7 +285,7 @@ namespace ariel
 		int count_alive = 0;
 		for (Character *character : this->_members)
 		{
-			if (character->isAlive())
+			if (character!=nullptr &&character->isAlive())
 			{
 				count_alive++;
 			}

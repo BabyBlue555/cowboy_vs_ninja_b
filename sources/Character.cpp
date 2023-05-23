@@ -28,6 +28,10 @@ namespace ariel{
 		if(power<0){
 			throw invalid_argument("Power cannot be negative!");;
 		}
+		if(_hp==0){
+			cout<<"character is already dead, can't hit";
+			return;
+		}
 		_hp -= power;
 	}
 
