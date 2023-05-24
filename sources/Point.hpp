@@ -39,7 +39,7 @@ namespace ariel{
 
             }
 
-    // static Point moveTowards(Point src, Point dest, double dist){
+   
     };
 };
 

@@ -45,9 +45,9 @@ namespace ariel{
 	//implement the pure virtual print() in Charachter abstract class 
 	string Cowboy::print() const
 	{
-		if(!this->isAlive()){
-			return "Cowboy";
+		if(!this->isAlive()){ // doesn't print health point
+			return "(C Name: "+this->getName()+ "),"+" Location: "+this->getLocation().print();
 		}
-		return "(C " + this->getName() + ")";
+		return "Name: "+this->getName()+", Health Points: "+to_string(this->getHP()) +", Location: "+this->getLocation().print();
 	}
 };

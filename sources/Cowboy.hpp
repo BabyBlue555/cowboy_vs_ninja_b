@@ -24,8 +24,6 @@ namespace ariel
 			*/
 			Cowboy(std::string name,Point location);
 
-			// virtual ~Cowboy()=default;
-
 			
 		
 			/*

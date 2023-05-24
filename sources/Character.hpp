@@ -22,12 +22,12 @@ namespace ariel
 			std::string _name;
 
 			/*
-			* @brief The location of the character.
+			* @brief The location of the character - a Point object.
 			*/
 			Point _location;
 
 			/*
-			 * @brief The health points of the character.
+			 * @brief The number of health points of the character. 0 points means death.
 			*/
 			int _hp;
 

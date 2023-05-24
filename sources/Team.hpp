@@ -95,8 +95,9 @@ namespace ariel{
 
 			/*
 			* @brief Print the team members
+			* @note in this class, the printing is in order - cowboys first, ninjas afterwards
 			*/
-			virtual void print() const;
+			virtual void print() const; 
 	};
 
 

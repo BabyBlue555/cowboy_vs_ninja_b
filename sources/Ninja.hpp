@@ -27,7 +27,6 @@ namespace ariel
 			*/
 			Ninja(std::string name, Point location, int health_points, int speed);
 
-			// virtual ~Ninja()=default;
 
 			/*
 			* @brief Moves the ninja to another character _speed steps closer.

@@ -31,9 +31,10 @@ namespace ariel{
 
 	string Ninja::print() const
 	{
-		if(!this->isAlive()){
-			return "Ninja";
+
+		if(!this->isAlive()){ // doesn't print health point
+			return "(N Name: "+this->getName()+ "), "+" Location: "+this->getLocation().print();
 		}
-		return "(N " + this->getName() + ")";
+		return "Name: "+this->getName()+", Health Points: "+to_string(this->getHP()) +", Location: "+this->getLocation().print();
 	}
 };
