@@ -528,11 +528,7 @@ TEST_SUITE("Battle simulations") {
         multi_attack(6, team2, team1);
         CHECK((!team_c3->isAlive() && team_c1->isAlive() && team_c2->isAlive()));
 
-        /* I ADDED 
-        */
-        // CHECK(!team_c3->isAlive());
-        // CHECK((team_c1->isAlive() && team_c2->isAlive()));
-
+       
 
         // Killing the new captain
         while (team2_c3->isAlive()) {
