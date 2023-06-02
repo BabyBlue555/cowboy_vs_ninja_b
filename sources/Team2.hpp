@@ -19,20 +19,27 @@ class Team2 : public Team{
 			*/
 			Team2(Character *leader);
 
+			/*
+			* @brief Find a victim to attack.
+			* @param other A pointer to the other team.
+			* @return A pointer to the victim, or nullptr if there is no victim.
+			* @note the preference to ninja or cowboy in the order
+			*/
 			Character* find_victim(Team *other, Character* leader);
 
+			/* @brief Choose another leader in case the current one is dead
+			* @param leader a pointer to the current leader
+			* @note the preference to ninja or cowboy in the order
+			*/
 			void choose_leader(Character* leader);
 
 			/*
 			* @brief Attack the other team
 			* @param other A pointer to the other team
 			*/
-			void attack(Team *other) override;
+			void attack(Team *other) ;
 
-			/*
-			* @brief Print the team members
-			*/
-			void print() const override;
+		
 	};
 };
 

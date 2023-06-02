@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef TEAM_HPP
 #define TEAM_HPP
 
@@ -24,13 +23,19 @@ namespace ariel{
 			* @brief A vector of pointers to the members of the team.
 			*/
 			vector<Character *> _members;
-				/*
+
+			/*
 			* @brief Find a victim to attack.
 			* @param other A pointer to the other team.
 			* @return A pointer to the victim, or nullptr if there is no victim.
 			*/
 			Character* find_victim(Team *other, Character* leader);
+
+			/* @brief Choose another leader in case the current one is dead
+			* @param leader a pointer to the current leader
+			*/
 			void choose_leader(Character* leader);
+			
 
 		public:
 			/*
@@ -84,14 +89,8 @@ namespace ariel{
 			*@note needed in case of the death of the previous leader 
 			*/
 			void setLeader(Character* leader);
+	
 
-
-			/*@brief get the team
-			*@return vector<Character*>  - the vector of the team members
-			*/
-			vector<Character*> getTeam() const;
-
-			
 
 			/*
 			* @brief Print the team members
@@ -101,6 +100,5 @@ namespace ariel{
 	};
 
 
-// }
 };
 #endif

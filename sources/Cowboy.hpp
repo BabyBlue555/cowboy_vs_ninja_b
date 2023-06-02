@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef COWBOY_HPP
 #define COWBOY_HPP
 
@@ -52,7 +51,7 @@ namespace ariel
 			int getNumBullets() const;
 			/*
 			* @brief Prints the cowboy.
-			* @return void
+			* @return string
 			*/
 			std::string print() const override;
 

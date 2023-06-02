@@ -48,10 +48,6 @@ namespace ariel
 				}
 				else
 				{
-					// if (leader == nullptr)
-					// { // give explanation
-					// 	break;
-					// }
 					if (character->distance(leader) < new_leader->distance(leader))
 					{
 						new_leader = character;
@@ -121,7 +117,7 @@ namespace ariel
 					if (ninja != nullptr && ninja->isAlive())
 					{
 
-						if (ninja->getLocation().distance(victim->getLocation()) <= 1)
+						if (ninja->distance(victim) <= 1)
 						{
 							ninja->slash(victim);
 						}
@@ -134,7 +130,7 @@ namespace ariel
 
 				else
 				{
-					if (cowboy != nullptr && cowboy->isAlive())
+					if (cowboy->isAlive())
 					{
 						if (cowboy->hasboolets())
 						{
@@ -150,9 +146,5 @@ namespace ariel
 		}
 	}
 
-	void Team2::print() const
-	{
-		return;
-	}
 
 };

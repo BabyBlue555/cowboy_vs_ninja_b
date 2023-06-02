@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef NINJA_HPP
 #define NINJA_HPP
 

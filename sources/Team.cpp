@@ -282,11 +282,6 @@ namespace ariel
 		this->_leader = leader;
 	}
 
-	vector<Character *> Team::getTeam() const
-	{
-		return this->_members;
-	}
-
 	void Team::print() const
 	{
 		string character_info = "";

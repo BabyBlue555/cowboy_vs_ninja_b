@@ -13,6 +13,9 @@
 using namespace std;
 
 #include "sources/Team.hpp" //no need for other includes
+// I Added
+#include "sources/Team2.hpp"
+#include "sources/SmartTeam.hpp"
 
 using namespace ariel;
 
@@ -45,7 +48,23 @@ int main() {
      }
 
      if (team_A.stillAlive() > 0) cout << "winner is team_A" << endl;
+     
      else cout << "winner is team_B" << endl;
+
+     cout<< "///////////////////////////"<<endl;
+
+     // I ADDED TO CHECK TEAM2 AND SMARTTEAM
+     OldNinja *bushi = new OldNinja("bushi", b);
+     OldNinja *tushi = new OldNinja("tushi", b);
+     Team2 my_team(bushi);
+     SmartTeam other_team(tushi);
+   //   my_team.print();
+   //   other_team.print();
+  
+
+
+
+
 
   
      return 0; // no memory issues. Team should free the memory of its members. both a and b teams are on the stack. 

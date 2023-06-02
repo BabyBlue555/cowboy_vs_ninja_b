@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
@@ -7,12 +6,6 @@
 #include <string>
 namespace ariel
 {
-
-
-
-
-// namespace ariel
-// {
 	class Character
 	{
 		private:
@@ -127,6 +120,5 @@ namespace ariel
 			*/
 			virtual std::string print() const = 0;
 	};
-// }
 };
 #endif

@@ -1,5 +1,3 @@
-//#include "Point.hpp"
-
 #include "Character.hpp"
 #include <iostream>
 
@@ -26,7 +24,7 @@ namespace ariel{
 	void Character::hit(int power)
 	{
 		if(power<0){
-			throw invalid_argument("Power cannot be negative!");;
+			throw invalid_argument("Power cannot be negative!");
 		}
 		if(_hp==0){
 			cout<<"character is already dead, can't hit";
